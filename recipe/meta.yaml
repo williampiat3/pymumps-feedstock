@@ -27,6 +27,7 @@ requirements:
     
   run:
     - python
+    - scipy
     - setuptools
     - openblas
     - mumps
