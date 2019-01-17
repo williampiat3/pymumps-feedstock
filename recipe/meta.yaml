@@ -16,7 +16,7 @@ build:
   skip: true  # [win]
   
 requirements:
-  build:
+  host:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - cython
