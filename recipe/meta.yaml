@@ -25,6 +25,7 @@ requirements:
   host:
     - libblas
     - libcblas
+    - liblapack
     - cython
     - python
     - mumps-mpi
