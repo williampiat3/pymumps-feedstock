@@ -11,12 +11,14 @@ source:
   sha256: dddfc13eb6af56a9bcd8e42fd42c3293dc50fd155fe3847c3dd84a403edba8ba
 
 build:
-  number: 1001
+  number: 1002
   script: python setup.py install --include-dirs $BUILD_PREFIX/include --library-dirs $BUILD_PREFIX/lib
   skip: true  # [win]
   
 requirements:
   host:
+    - libblas
+    - libcblas
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - cython
@@ -29,7 +31,6 @@ requirements:
     - python
     - scipy
     - setuptools
-    - openblas
     - mumps
     - mpi4py
     - {{ pin_compatible('numpy') }}
