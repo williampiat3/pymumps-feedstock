@@ -14,7 +14,9 @@ build:
   number: 1002
   script: |
     pip install . -vv --global-option="build_ext" \
-       --global-option="-lmumps_common,esmumps,metis,scotch,lapack,blas,mpiseq,pord"
+       --global-option="-lmumps_common,esmumps,metis,scotch,lapack,blas,mpiseq,pord" \
+       --global-option="-I$PREFIX/include" \
+       --global-option="-L$PREFIX/lib"
   skip: true  # [win]
   
 requirements:
