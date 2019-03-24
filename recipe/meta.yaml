@@ -14,7 +14,6 @@ build:
   number: 1002
   script: |
     pip install . -vv --global-option="build_ext" \
-       --global-option="-lmumps_common,esmumps,metis,scotch,lapack,blas,mpiseq,pord" \
        --global-option="-I$PREFIX/include" \
        --global-option="-L$PREFIX/lib"
   skip: true  # [win]
@@ -24,12 +23,9 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
-    - libblas
-    - libcblas
-    - liblapack
     - cython
     - python
-    - mumps-seq
+    - mumps-mpi
     - mumps-include
     - setuptools
     - mpi4py
@@ -38,7 +34,7 @@ requirements:
     - python
     - scipy
     - setuptools
-    - mumps-seq
+    - mumps-mpi
     - mpi4py
     - {{ pin_compatible('numpy') }}
 
