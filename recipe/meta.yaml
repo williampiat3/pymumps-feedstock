@@ -1,5 +1,5 @@
-{% set name = "pymumps" %}
-{% set version = "0.1" %}
+{% set name = "PyMUMPS" %}
+{% set version = "0.3.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,15 +7,14 @@ package:
   
 source:
   fn: {{ version }}.tar.gz
-  url: https://github.com/santiagoropb/pymumps/archive/v{{ version }}.tar.gz
-  sha256: dddfc13eb6af56a9bcd8e42fd42c3293dc50fd155fe3847c3dd84a403edba8ba
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: f290ec4850098f108fb91cb9e7fa07302ebf5076e4329f8e6ea4924de8ba35df
 
 build:
   number: 1002
-  script:
-    - ln -s $PREFIX/lib/liblapack${SHLIB_EXT} $PREFIX/lib/libopenblas${SHLIB_EXT}
-    - python setup.py install --include-dirs $BUILD_PREFIX/include --library-dirs $BUILD_PREFIX/lib
-    - rm  $PREFIX/lib/libopenblas${SHLIB_EXT}
+  script: |
+    pip install . -vv --global-option="build_ext" \
+       --global-option="-lmumps_common,esmumps,metis,scotch,lapack,blas,mpiseq,pord"
   skip: true  # [win]
   
 requirements:
@@ -28,15 +27,16 @@ requirements:
     - liblapack
     - cython
     - python
-    - mumps-mpi
+    - mumps-seq
     - mumps-include
     - setuptools
     - mpi4py
+    - pip
   run:
     - python
     - scipy
     - setuptools
-    - mumps-mpi
+    - mumps-seq
     - mpi4py
     - {{ pin_compatible('numpy') }}
 
@@ -45,7 +45,7 @@ test:
     - mumps
 
 about:
-  home: https://github.com/santiagoropb/pymumps.git
+  home: https://github.com/PyMUMPS/pymumps.git
   license: BSD-3
   license_file: COPYING
   summary: 'PyMUMPS: Python parallel sparse direct solver'
