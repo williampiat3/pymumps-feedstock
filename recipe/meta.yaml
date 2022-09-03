@@ -11,7 +11,7 @@ source:
   sha256: f290ec4850098f108fb91cb9e7fa07302ebf5076e4329f8e6ea4924de8ba35df
 
 build:
-  number: 1006
+  number: 1007
   script: |
     pip install . -vv --global-option="build_ext" \
        --global-option="-I$PREFIX/include" \
