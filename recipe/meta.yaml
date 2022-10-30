@@ -44,7 +44,7 @@ test:
 
 about:
   home: https://github.com/PyMUMPS/pymumps.git
-  license: BSD-3
+  license: BSD-3-Clause
   license_file: COPYING
   summary: 'PyMUMPS: Python parallel sparse direct solver'
 
