@@ -40,8 +40,21 @@ requirements:
     - mpi4py
 
 test:
+  source_files:
+    - examples
   imports:
     - mumps
+  requires:
+    - cython
+    - mumps-seq      # [win]
+    - mumps-mpi      # [osx or linux]
+    - mumps-include  # [osx or linux]
+    - python
+    - mpi4py
+    - numpy
+  commands:
+    - python examples/dsimpletest.py
+
 
 about:
   home: https://github.com/PyMUMPS/pymumps.git
